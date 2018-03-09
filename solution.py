@@ -108,6 +108,26 @@ def naked_twins(values):
                         values[box] = values[box].replace(digit,'')                    
             
 
+    #Naked Twins for diagonal units
+    for unit in diag_units:
+        naked_twins = []
+        temp_values = []
+        #store all elements len = 2 in dplaces
+        dplaces = [box for box in unit if len(values[box]) == 2]
+        
+        #create temporary values array to determine naked_twins
+        for box in dplaces:
+            temp_values.append(values[box])
+        
+        #store all the naked twins from dplaces in naked_twins
+        naked_twins = [box for box in dplaces if temp_values.count(values[box]) > 1] 
+        
+        #with the calculated naked_twins, go through boxes in each unit to remove the digits from naked_twins                    
+        for box in unit:
+            if(box not in naked_twins):
+                for naked_twin in naked_twins:
+                    for digit in values[naked_twin]:
+                        values[box] = values[box].replace(digit,'') 
     return values
         
 def eliminate(values):
