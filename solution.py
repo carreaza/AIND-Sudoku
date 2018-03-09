@@ -44,9 +44,7 @@ def naked_twins(values):
     strategy repeatedly).
     """
     
-    #Naked Twins for Columns
-
-    
+    #Naked Twins for rows
     for unit in row_units:
         naked_twins = []
         temp_values = []
@@ -67,6 +65,7 @@ def naked_twins(values):
                     for digit in values[naked_twin]:
                         values[box] = values[box].replace(digit,'')
     
+    #Naked Twins for columns
     for unit in column_units:
         naked_twins = []
         temp_values = []
@@ -86,7 +85,8 @@ def naked_twins(values):
                 for naked_twin in naked_twins:
                     for digit in values[naked_twin]:
                         values[box] = values[box].replace(digit,'')
-
+    
+    #Naked Twins for square units
     for unit in square_units:
         naked_twins = []
         temp_values = []
@@ -110,10 +110,6 @@ def naked_twins(values):
 
     return values
         
-     
-    
-
-
 def eliminate(values):
     """Apply the eliminate strategy to a Sudoku puzzle
 
